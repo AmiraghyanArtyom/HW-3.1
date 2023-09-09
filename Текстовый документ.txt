@@ -1,0 +1,139 @@
+#zadacha 1
+print("zadacha 1")
+class Animal:
+    def __init__(self, name: str, type:str, age: int,sound:str) -> None:
+        self.name = name
+        self.type = type
+        self.age = age
+        self.sound = sound
+
+    def get_sound(self) -> str:
+        return f"{self.type} издает звук {self.sound}"
+
+    def __str__(self) -> str:
+        return f"{self.type} - один из видов животных , имя:{self.name}, возраст:{self.age}"
+
+
+Animal1 = Animal("REX", "dog", 3, "gavgav")
+Animal2 = Animal("Alberto", "Cow", 5, "beeee")
+
+print(Animal1)
+print(Animal2)
+print(Animal2.get_sound())
+print(Animal1.get_sound())
+
+print("-------------------------------------------------------------------------------------------------")
+print("zadacha 2")
+#zadacha 2
+
+class Book:
+    def __init__(self,name:str, Author:str, pages: int) -> None:
+        self.name = name
+        self.Author = Author
+        self.pages = pages
+
+    def open_book(self,number)-> str:
+        if number < self.pages:
+            return f"книга,{self.name}, открылась на странице {number}"
+        else:
+            return f"книга, {self.name}, не открылась ,так как она состоит из {self.pages} страниц."
+
+    def __str__(self):
+        return f"книга:{self.name},автор киниги:{self.Author},в нем {self.pages} страниц."
+
+
+book1 = Book("Три мушкетера","Александр Дюма",500,)
+book2 =Book("Тарас Бульба", "Николай Гоголь", 192)
+print(book2)
+print(book1)
+print(book2.open_book(150))
+print(book1.open_book(570))
+
+print("------------------------------------------------")
+print("zadacha 3")
+#zadacha 3
+
+class PassengerPlane:
+    def __init__(self, manufacturer:str, model:str, capacity:int, height:int, speed:int) -> None:
+        self.manufacturer = manufacturer
+        self.model = model
+        self.capacity = capacity
+        self.height = height
+        self.speed = speed
+
+    def takeoff(self,) -> str:
+        if self.height > 0 :
+            return f"самолет взлетел"
+        else:
+            return f"самолет не взлетел"
+
+    def landing(self,) -> str:
+        if self.height == 0:
+            return f"самолет приземлился"
+        else:
+            return f"самолет не приземлился"
+
+    def Height_change(self,new_height:int) -> None:
+        self.height = new_height
+
+    def change_speed(self, newspeed: int) -> None:
+        self.speed = newspeed
+
+    def __str__(self):
+        return f"Самолет модель {self.model}, производитель: {self.manufacturer}, вместимость пассажиров: {self.capacity}, текущая высота полета {self.height} км, скорость полета {self.speed} км\ч"
+
+
+plane1 = PassengerPlane("Boeing","b-767",200,100,400)
+plane2 = PassengerPlane("OAK","TY-214",80,500,340)
+
+print(plane1)
+print(plane2)
+print(plane1.takeoff())
+print(plane2.takeoff())
+plane2.change_speed(300)
+print(plane2)
+plane1.Height_change(0)
+print(plane1.takeoff())
+plane2.Height_change(0)
+print(plane2.landing())
+
+print("-----------------------------------------------------------")
+print("zadacha 4")
+#zadacha 4
+
+
+class MusicAlbum:
+    def __init__(self,artist:str,album:str,genre:str,track_list:list) -> None:
+        self.artist = artist
+        self.album = album
+        self.genre = genre
+        self.track_list = track_list
+
+    def add_track(self,track:str) -> str:
+        self.track_list.append(track)
+        return f"трек<<{track}>> добавлен в альбом <<{self.album}>> "
+
+    def remove_track(self,track:str)-> str:
+        self.track_list.remove(track)
+        return f"Трек <<{track}>> удален из альбома <<{self.album}>>"
+
+    def play_track(self,track:str)-> str:
+        if track in self.track_list:
+            return f"трек<<{track}>> воспроизводится!"
+        else:
+            return f"трек<<{track}>> не найден в списке"
+
+    def __str__(self):
+        return f"Исполнитель: {self.artist}, Название альбома: '{self.album}', Жанр: {self.genre}, список треков: {self.track_list}"
+
+
+list1 = ["i can fly,","memorise","мосты горят","малая"]
+
+track1 = MusicAlbum("Xcho","immigrant","русский хип-хоп",list1)
+print(track1)
+print(track1.remove_track("малая"))
+print(track1)
+print(track1.add_track("эскиз"))
+print(track1)
+print(track1.play_track("эскиз"))
+print(track1.play_track("i love you"))
